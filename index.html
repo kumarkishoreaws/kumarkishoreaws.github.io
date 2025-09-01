@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kishore K's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- General Body and Scroll Styling --- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    /* --- Welcome Section (Hero) --- */
+    #welcome {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #000000, #111111);
+      overflow: hidden;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* --- Animated Emojis Background --- */
+    .animated-emojis {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 2rem;
+        animation: moveAcross 15s linear infinite;
+        opacity: 0.3;
+        user-select: none;
+    }
+
+    @keyframes moveAcross {
+        0% { transform: translateX(-10vw); }
+        100% { transform: translateX(110vw); }
+    }
+
+    .emoji:nth-child(1) { top: 10%; animation-duration: 20s; animation-delay: -5s; }
+    .emoji:nth-child(2) { top: 30%; animation-duration: 15s; animation-delay: -2s; font-size: 2.5rem; }
+    .emoji:nth-child(3) { top: 50%; animation-duration: 25s; animation-delay: -10s; }
+    .emoji:nth-child(4) { top: 70%; animation-duration: 18s; animation-delay: -15s; font-size: 2.2rem; }
+    .emoji:nth-child(5) { top: 85%; animation-duration: 22s; animation-delay: -8s; }
+
+
+    .content {
+        position: relative;
+        z-index: 1;
+        background: rgba(10, 10, 10, 0.5);
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .profile-pic {
+      width: 220px; /* Increased from 180px */
+      height: 220px; /* Increased from 180px */
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      transform: scale(0.9);
+      transition: transform 0.5s ease;
+    }
+    .profile-pic:hover {
+      transform: scale(1);
+    }
+
+    .name {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      animation: fadeInDown 1.5s ease-in-out;
+    }
+
+    .role {
+      font-size: 1.2rem;
+      margin-top: 5px; /* Reduced from 10px */
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    .tagline-container {
+        position: relative;
+        margin-top: 20px;
+        animation: loopingCloudDrop 7s infinite ease-in-out;
+    }
+
+    .cloud-emoji {
+        font-size: 3rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      margin-top: -10px;
+      font-style: italic;
+      color: #fff;
+      text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 30px #00f7ff;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    /* --- Keyframe Animations --- */
+    @keyframes loopingCloudDrop {
+        0%, 100% {
+            transform: translateY(-60px);
+            opacity: 0;
+        }
+        15%, 85% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff, 0 0 15px #00f7ff; }
+      to { text-shadow: 0 0 20px #00f7ff, 0 0 30px #00f7ff, 0 0 40px #00f7ff; }
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* --- Navigation Buttons --- */
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      background: #111;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn:hover {
+      transform: perspective(500px) translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 247, 255, 0.4);
+      background-color: #00f7ff;
+      color: #000;
+      border-color: #00f7ff;
+    }
+
+    .btn-cv {
+        margin-top: 20px;
+    }
+
+    /* --- General Section Styling --- */
+    section {
+      padding: 80px 20px;
+      border-bottom: 1px solid #222;
+    }
+
+    .section-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      font-weight: 600;
+      color: #00f7ff;
+    }
+
+    /* --- Summary Section --- */
+    #summary p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center;
+      color: #ccc;
+    }
+
+    /* --- Cloud Shape Styling for Boxes --- */
+    .cloud-box {
+        background-color: #1a1a1a;
+        clip-path: url(#cloud-shape);
+        filter: drop-shadow(0 0 3px #00f7ff) drop-shadow(0 0 8px rgba(0, 247, 255, 0.5));
+        transition: transform 0.3s ease, filter 0.3s ease;
+        padding: 40px 35px;
+    }
+    .cloud-box:hover {
+        transform: translateY(-5px) scale(1.02);
+        filter: drop-shadow(0 0 5px #00f7ff) drop-shadow(0 0 15px rgba(0, 247, 255, 0.7));
+    }
+
+    /* --- Square Box Styling for Experience & Projects --- */
+    .square-box {
+        background: #1a1a1a;
+        padding: 25px;
+        border-radius: 10px;
+        border: 1px solid #222;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .square-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 247, 255, 0.1);
+        border-color: #00f7ff;
+    }
+
+
+    /* --- Skills Section --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .skill-category h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    .skill-category p {
+      margin: 0;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* --- Experience & Projects Sections --- */
+    .entry {
+      margin-bottom: 40px;
+    }
+    .entry-header h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #00f7ff;
+    }
+    .entry-header p {
+      margin: 5px 0 15px 0;
+      color: #ccc;
+      font-style: italic;
+    }
+    .entry-body ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+    .entry-body li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    
+    /* --- Certifications & Education Section --- */
+    .edu-cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        text-align: center;
+    }
+     .edu-cert-item h3 {
+        margin: 0 0 10px 0;
+        color: #00f7ff;
+     }
+     .edu-cert-item p {
+        margin: 5px 0;
+        color: #ccc;
+     }
+    
+    /* --- Kubernetes Project Specifics --- */
+    .project-details p {
+        line-height: 1.7;
+        color: #ddd;
+    }
+    .project-details h4 {
+        color: #00f7ff;
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+
+    /* --- Contact Section --- */
+    #contact {
+      border-bottom: none;
+    }
+    #contact .section-container {
+        text-align: center;
+    }
+    .contact-links {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .contact-links a {
+      color: #00f7ff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .contact-links a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG Definition for Cloud Shape -->
+  <svg width="0" height="0">
+    <defs>
+        <clipPath id="cloud-shape" clipPathUnits="objectBoundingBox">
+            <path d="M0.5,0.9 C0.2,0.9,0,0.7,0,0.45 C0,0.2,0.2,0,0.5,0 C0.65,0,0.79,0.06,0.86,0.17 C0.94,0.1,1,0.24,1,0.35 C1,0.5,0.9,0.6,0.8,0.6 C0.85,0.75,0.7,0.9,0.5,0.9 Z"></path>
+        </clipPath>
+    </defs>
+  </svg>
+
+  <!-- Welcome Section -->
+  <section id="welcome">
+    <div class="animated-emojis">
+        <span class="emoji">☁️</span>
+        <span class="emoji">🚀</span>
+        <span class="emoji">🔧</span>
+        <span class="emoji">📦</span>
+        <span class="emoji">⚙️</span>
+    </div>
+    <div class="content">
+      <img src="assets/kishore.png" alt="Profile Photo of Kishore K" class="profile-pic"/>
+      <h1 class="name">KISHORE K</h1>
+      <p class="role">AWS DevOps Engineer</p>
+      <button class="btn btn-cv" onclick="window.open('assets/KISHORE K.pdf', '_blank')">View CV</button>
+      <div class="tagline-container">
+          <div class="cloud-emoji">☁️</div>
+          <p class="tagline">“Love automating things in the cloud and picking up new skills along the way.”</p>
+      </div>
+      <div class="buttons">
+        <button class="btn" onclick="scrollToSection('summary')">Summary</button>
+        <button class="btn" onclick="scrollToSection('skills')">Skills</button>
+        <button class="btn" onclick="scrollToSection('experience')">Experience</button>
+        <button class="btn" onclick="scrollToSection('projects')">Projects</button>
+        <button class="btn" onclick="scrollToSection('certifications')">Certifications</button>
+        <button class="btn" onclick="scrollToSection('education')">Education</button>
+        <button class="btn" onclick="scrollToSection('contact')">Contact</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Summary Section -->
+  <section id="summary">
+    <div class="section-container">
+      <h2 class="section-title">Professional Summary</h2>
+      <p>
+        AWS DevOps Engineer with 2.5 years of IT experience (including 1.5+ years in AWS & DevOps) specializing in cloud infrastructure, automation, and CI/CD pipelines. Proven record of owning end-to-end delivery of AWS environments and automating deployments. Achieved ~40% faster deployments and ~60% quicker incident detection. Skilled in designing secure, highly available cloud architectures.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category cloud-box">
+          <h3>Cloud Platforms</h3>
+          <p>AWS (EC2, S3, RDS, ECR, ECS Fargate, VPC, ALB, IAM, Route53, WAF, CloudWatch)</p>
+        </div>
+        <div class="skill-category cloud-box">
+          <h3>Infrastructure as Code (IaC)</h3>
+          <p>Terraform (modular deployments, state management)</p>
+        </div>
+        <div class="skill-category cloud-box">
+          <h3>CI/CD & Automation</h3>
+          <p>Jenkins, GitHub Actions</p>
+        </div>
+        <div class="skill-category cloud-box">
+          <h3>Containers & Orchestration</h3>
+          <p>Docker, Kubernetes, ECS Fargate</p>
+        </div>
+        <div class="skill-category cloud-box">
+          <h3>Security & Networking</h3>
+          <p>Custom VPCs, Security Groups, Subnets, NAT Gateway, WAF policies</p>
+        </div>
+        <div class="skill-category cloud-box">
+          <h3>Programming & Tools</h3>
+          <p>Bash scripting, Git, Postman</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="section-container">
+      <h2 class="section-title">Work Experience</h2>
+      
+      <div class="entry square-box">
+        <div class="entry-header">
+          <h3>AWS DevOps Engineer</h3>
+          <p>Etome (Resolute Enterprises) | Kerala, India (Aug 2024 - Present)</p>
+        </div>
+        <div class="entry-body">
+          <ul>
+            <li>Solo DevOps engineer responsible for infrastructure, CI/CD, and deployments.</li>
+            <li>Designed secure custom VPCs and provisioned 5+ EC2 instances for staging & production.</li>
+            <li>Automated CI/CD pipelines with Jenkins, reducing release time by ~40%.</li>
+            <li>Enabled centralized monitoring with CloudWatch, improving incident detection by ~60%.</li>
+            <li>Built a GitHub Actions pipeline to publish Flutter APKs to S3, automating uploads and eliminating manual release steps.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry square-box">
+        <div class="entry-header">
+          <h3>Cloud & DevOps Intern</h3>
+          <p>Smik Systems (OPC) Pvt Ltd. | Bengaluru (Feb 2024 - July 2024)</p>
+        </div>
+        <div class="entry-body">
+          <ul>
+            <li>Practiced hands-on labs & PoCs with Terraform, Jenkins, Docker, and core AWS services.</li>
+            <li>Focused on foundational infrastructure automation and IaC principles.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="entry square-box">
+        <div class="entry-header">
+          <h3>Oracle Integration Cloud Developer</h3>
+          <p>Cognizant Technology Solutions | Coimbatore, India (Dec 2022 - Dec 2023)</p>
+        </div>
+        <div class="entry-body">
+          <ul>
+            <li>Built 25+ integration flows using REST/SOAP/file adapters, improving system interoperability.</li>
+            <li>Created 15+ reusable templates that accelerated project delivery timelines.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="section-container">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="entry square-box">
+        <div class="entry-header">
+          <h3>Ruby on Rails App on AWS ECS Fargate + Terraform</h3>
+          <p>Personal Learning Project</p>
+        </div>
+        <div class="entry-body">
+          <ul>
+            <li>Designed & deployed a production-grade architecture with a custom VPC, subnets, and Security Groups.</li>
+            <li>Containerized Rails + Nginx, pushed images to ECR, and deployed multi-container ECS Fargate tasks behind an ALB.</li>
+            <li>Automated the entire infrastructure stack with Terraform modules and managed remote state.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="entry square-box project-details">
+        <div class="entry-header">
+          <h3>Hands-on Kubernetes Project: From Code to Cluster </h3>
+        </div>
+        <div class="entry-body">
+            <p>
+                This project was a deep dive into container orchestration, where I successfully deployed a multi-service full-stack application (React, Django, PostgreSQL) on a local Kubernetes cluster using Minikube. The goal was to simulate a real-world production setup, managing containerized services, networking, and configuration within the Kubernetes ecosystem.
+            </p>
+            
+            <h4>Tech Stack & Tools:</h4>
+            <ul>
+                <li><strong>Frontend:</strong> React (served via Nginx)</li>
+                <li><strong>Backend:</strong> Django (REST API + Gunicorn)</li>
+                <li><strong>Database:</strong> PostgreSQL</li>
+                <li><strong>Containerization:</strong> Docker (images pushed to Docker Hub)</li>
+                <li><strong>Orchestration:</strong> Kubernetes (Minikube, Deployments, NodePort Services)</li>
+                <li><strong>Configuration:</strong> ConfigMaps & Secrets for secure DB credentials.</li>
+            </ul>
+
+            <h4>Key Achievements & Learnings:</h4>
+            <ul>
+                <li><strong>Mastering K8s Networking:</strong> A major takeaway was understanding the intricacies of in-cluster networking. I configured `NodePort` services to expose the application and established communication between the React frontend and Django backend, learning the crucial role of Kubernetes DNS for service discovery.</li>
+                <li><strong>Robust Configuration Management:</strong> I leveraged `ConfigMaps` to manage non-sensitive application configuration and `Secrets` to securely inject database credentials, enhancing security and portability by separating configuration from container images.</li>
+                <li><strong>Observing Self-Healing & Scalability:</strong> I witnessed Kubernetes' powerful self-healing capabilities firsthand by deleting pods and watching the `Deployment` controller automatically recreate them. This provided practical insight into the resilience of orchestrated systems.</li>
+            </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Combined Certifications & Education Section -->
+  <section id="certifications-education">
+    <div class="section-container">
+        <div class="edu-cert-grid">
+            <div id="certifications" class="edu-cert-item cloud-box">
+                <h2 class="section-title" style="font-size: 2rem; margin-bottom: 20px;">Certifications</h2>
+                <h3>AWS Cloud Computing & Infrastructure</h3>
+                <p>Smik Systems (2024)</p>
+                <br>
+                <h3>Oracle Cloud Integration 1Z0-1023</h3>
+                <p>Oracle (2023)</p>
+            </div>
+            <div id="education" class="edu-cert-item cloud-box">
+                <h2 class="section-title" style="font-size: 2rem; margin-bottom: 20px;">Education</h2>
+                <h3>B.E. Electrical & Electronics Engineering</h3>
+                <p>Karpagam College of Engineering (2022)</p>
+                <p><strong>Result:</strong> 84%</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p>Located in Tamil Nadu, India. Feel free to reach out!</p>
+        <div class="contact-links">
+            <a href="mailto:kishoreash23@gmail.com">kishoreash23@gmail.com</a>
+            <a href="tel:+919080447822">+91 9080447822</a>
+            <a href="https://www.linkedin.com/in/kishorek05/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+  </section>
+
+  <script>
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        if (id === 'certifications' || id === 'education') {
+             document.getElementById('certifications-education').scrollIntoView({ behavior: 'smooth' });
+        } else {
+             element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+
